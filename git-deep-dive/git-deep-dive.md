@@ -1,3 +1,6 @@
+---
+theme: league
+---
 # Git Deep Dive
 
 ---
@@ -9,7 +12,7 @@
 Jordan Duabe -- `@j4ckofalltrades`
 
 - Software Engineer @ WiseTime
--  Polyglot dev & open-source enthusiast
+- Polyglot dev & open-source enthusiast
 - Command-line ninja :ninja:
 - Has one too many MKBs :keyboard:
 
@@ -63,8 +66,11 @@ git clone https://github.com/git/git
 note:
 
 Total commits: `git rev-list --count --all`
+
 Total files: `git ls-files | wc -l`
+
 Total lines of code: `git ls-files | xargs wc -l`
+
 Total committers: `git shortlog --summary --numbered | wc -l`
 
 ---
@@ -309,7 +315,7 @@ git remote add <remote> <remote-url>
 # to check if the remote was properly configured
 git remote --verbose
 
-# the update the remote URLs can also be updated
+# the remote URLs can also be updated
 # generally used when the remote repository is renamed
 # or when switching hosting providers e.g. GitHub
 git remote set-url <remote> <new-remote-url>
@@ -638,7 +644,6 @@ git pull origin main
 
 ![merge|620](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzB0ZHY3NmVvemM2eHdkeWlpbGxhdTBhcTNkczhhN3JzcG4wcjNmYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/cFkiFMDg3iFoI/giphy.gif)
 
-
 ---
 
 ### Rebase
@@ -704,20 +709,16 @@ git grep <search-term> [pathspec]
 
 ### `git revert`
 
-Revert some existing commits.
+Undo some existing commits.
 
 ```sh
 git revert <commit>
 
-# Revert a specific commit
-git revert <commit-hash>
+# revert a specific commit
+git revert <commit>
 
-# Revert a commit relative to the latest commit
-# This reverts the 4th latest commit
-git revert HEAD~3
-
-# Open an editor and edit the default message
-git revert --edit <commit>
+# revert the commit but doesn't commit the changes
+git revert --no-commit <commit>
 ```
 
 note:
@@ -733,7 +734,7 @@ Stash the changes in a dirty working directory away.
 ```sh
 git stash create <message>
 
-# Applying stashes
+# list all existing stashes
 git stash list
 # apply specific stash from list
 git stash apply stash{0}
@@ -748,7 +749,7 @@ git stash pop
 Apply the changes introduced by some existing commits (from some other branch).
 
 ```sh
-git cherry-pick <commit-hash>
+git cherry-pick <commit>
 ```
 
 ---
