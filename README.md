@@ -6,6 +6,7 @@ Collection of talks in HTML, Markdown, and PDF formats.
 
 - [Git Deep Dive](git-deep-dive)
 - [Trusted Publishers in PyPI](pypi-trusted-publisher)
+- [Git Hooks](git-hooks)
 
 ##  License
 
