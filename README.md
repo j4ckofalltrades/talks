@@ -4,9 +4,9 @@
 
 Collection of talks in HTML, Markdown, and PDF formats.
 
-- [Git Deep Dive](git-deep-dive)
-- [Trusted Publishers in PyPI](pypi-trusted-publisher)
-- [Git Hooks](git-hooks)
+- [Git Deep Dive](https://talks.jduabe.dev/git-deep-dive)
+- [Trusted Publishers in PyPI](https://talks.jduabe.dev/pypi-trusted-publisher)
+- [Git Hooks](https://talks.jduabe.dev/git-hooks)
 
 ##  License
 
