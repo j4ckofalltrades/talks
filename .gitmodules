@@ -1,0 +1,9 @@
+[submodule "git-deep-dive"]
+	path = git-deep-dive
+	url = git@github.com:j4ckofalltrades/git-deep-dive.git
+[submodule "pypi-trusted-publisher"]
+	path = pypi-trusted-publisher
+	url = git@github.com:j4ckofalltrades/pypi-trusted-publisher.git
+[submodule "git-hooks"]
+	path = git-hooks
+	url = git@github.com:j4ckofalltrades/git-hooks.git
