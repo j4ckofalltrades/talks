@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css"/>
+    <link rel="stylesheet" href="dist/theme/consult.css" id="theme"/>
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css"/>
+    <link rel="stylesheet" href="css/layout.css"/>
+    <link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+    <script type="text/javascript">
+        var forgetPop = true;
+
+        function onPopState(event) {
+            if (forgetPop) {
+                forgetPop = false;
+            } else {
+                parent.postMessage(event.target.location.href, "app://obsidian.md");
+            }
+        }
+
+        window.onpopstate = onPopState;
+        window.onmessage = event => {
+            if (event.data == "reload") {
+                window.document.location.reload();
+            }
+            forgetPop = true;
+        }
+
+        function fitElements() {
+            const itemsToFit = document.getElementsByClassName('fitText');
+            for (const item in itemsToFit) {
+                if (Object.hasOwnProperty.call(itemsToFit, item)) {
+                    var element = itemsToFit[item];
+                    fitElement(element, 1, 1000);
+                    element.classList.remove('fitText');
+                }
+            }
+        }
+
+        function fitElement(element, start, end) {
+
+            let size = (end + start) / 2;
+            element.style.fontSize = `${size}px`;
+
+            if (Math.abs(start - end) < 1) {
+                while (element.scrollHeight > element.offsetHeight) {
+                    size--;
+                    element.style.fontSize = `${size}px`;
+                }
+                return;
+            }
+
+            if (element.scrollHeight > element.offsetHeight) {
+                fitElement(element, start, size);
+            } else {
+                fitElement(element, size, end);
+            }
+        }
+
+
+        document.onreadystatechange = () => {
+            fitElements();
+            if (document.readyState === 'complete') {
+                if (window.location.href.indexOf("?export") != -1) {
+                    parent.postMessage(event.target.location.href, "app://obsidian.md");
+                }
+                if (window.location.href.indexOf("print-pdf") != -1) {
+                    let stateCheck = setInterval(() => {
+                        clearInterval(stateCheck);
+                        window.print();
+                    }, 250);
+                }
+            }
+        };
+
+
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="white" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                # [DRAFT] Snake2040 🐍
+
+                ## Writing snake with MicroPython on the Badger2040
+
+                <br></br>
+
+                <div class="block">
+
+                    ### Jordan Duabe
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _**Agenda**_
+                    </div>
+
+
+                </div>
+
+                <div class="has-light-background"
+                     style="border-radius: 15px; background-color: white; position: absolute; left: 3%; top: 15%; height: 70%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 5%; top: 17%; height: 66%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start"
+                     align="left">
+
+
+                    <div class="block">
+
+                        1. Hardware
+                        2. Software
+                        3. Coding the game
+                        4. Demo
+                    </div>
+
+                    <!-- .element: style="font-size: 20px; font-weight: 600; line-height: 1.7; padding: 20px 0; box-sizing: border-box" -->
+
+
+                </div>
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class=""
+                     style="background: radial-gradient(#003D4D, #333333); position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+
+                    ## Hardware
+                    <!-- .element: style="color: white" -->
+
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _Badger2040_
+                    </div>
+
+
+                </div>
+
+                <div class="has-light-background"
+                     style="border-radius: 15px; background-color: white; position: absolute; left: 69%; top: 15%; height: 75%; width: 28%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 70%; top: 17%; height: 71%; width: 26%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start"
+                     align="left">
+
+
+                    <div class="block">
+
+                        #### Features
+
+                        - 2.9" black and white E Ink® display (296 x 128 pixels)
+                        - Powered by RP2040 (Dual Arm Cortex M0+ running at up to 133Mhz with 264kB of SRAM)
+                        - Five front user buttons
+                        - USB-C connector for power and programming
+                        - JST-PH connector for attaching a battery (input range 2.7V - 6V)
+                    </div>
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 3%; top: 15%; height: 70%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start"
+                     align="left">
+
+
+                    <div class="block">
+
+                        <img src="assets/snake2040/badger2040-front.jpg" alt="badger2040-front|300"
+                             style="width: 300px; object-fit: fill">
+
+
+                        <img src="assets/snake2040/badger2040-back.jpg" alt="badger2040-back|300"
+                             style="width: 300px; object-fit: fill">
+
+                    </div>
+
+                    <!-- .element: style="position: absolute; top: 10%" -->
+
+                </div>
+
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+                    <div class="block">
+
+                        ##### Source: https://shop.pimoroni.com/products/badger-2040
+                    </div>
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class=""
+                     style="background: radial-gradient(#003D4D, #333333); position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+
+                    ## Software
+                    <!-- .element: style="color: white" -->
+
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _Firmware_
+                    </div>
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 5%; top: 17%; height: 66%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start"
+                     align="left">
+
+
+                    The Badger2040 firmware is hosted on GitHub with two variants.
+
+                    - `pimoroni-badger2040-vX.X.X-`**micropython-with-badger-os**`.uf2`
+                    - `pimoroni-badger2040-vX.X.X-`**micropython**`.uf2`
+
+                    To install (or upgrade to a newer version):
+
+                    1. Connect the device your computer.
+                    2. Enter into bootloader mode by holding the `BOOT/USR` button and pressing the `RST` button.
+                    3. Drag and drop the `*.uf2` file to the `RPI-RP2` drive.
+
+
+                </div>
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _Development_
+                    </div>
+
+
+                </div>
+
+                <div class="has-light-background"
+                     style="border-radius: 15px; background-color: white; position: absolute; left: 69%; top: 15%; height: 75%; width: 28%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 70%; top: 17%; height: 71%; width: 26%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start"
+                     align="left">
+
+
+                    <div class="block">
+
+                        #### Tools
+
+                        - Thonny
+                        - PyCharm (with MicroPython extension)
+                        - VS Code (with MicroPython extension)
+                        - `adafruit-ampy` (CLI tool)
+                        - ViperIDE (web-based IDE using the WebSerial and WebUSB APIs)
+                    </div>
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 3%; top: 15%; height: 70%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start"
+                     align="left">
+
+
+                    <div class="block">
+
+                        <img src="assets/snake2040/viper-ide.png" alt="viper-ide" style="object-fit: scale-down">
+
+                    </div>
+
+                    <!-- .element: style="position: absolute; top: -5%" -->
+
+                </div>
+
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _MicroPython_
+                    </div>
+
+
+                </div>
+
+                <div class="has-light-background"
+                     style="border-radius: 15px; background-color: white; position: absolute; left: 3%; top: 15%; height: 70%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 5%; top: 17%; height: 66%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start"
+                     align="left">
+
+
+                    #### Features
+
+                    - A lean implementation of Python 3 designed for microcontrollers and embedded systems
+                    - Aims to implement Python 3.4 and select features of Python 3.5+
+                    - Includes a subset of Python standard libraries
+                    - Requires minimal RAM (as little as 16KB) and storage space (256KB flash)
+                    - Ships with an interactive REPL (Read-Evaluate-Print Loop)
+                    - Provides hardware-specific modules for direct control of microcontroller peripherals
+
+
+                </div>
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _Badger2040 MicroPython Firmware_
+                    </div>
+
+
+                </div>
+
+
+                <img src="assets/snake2040/badger2040-fw.png" alt="badger2040.py|360"
+                     style="width: 360px; object-fit: fill">
+
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+                    <div class="block">
+
+                        ##### Source:
+                        https://github.com/pimoroni/badger2040/blob/main/firmware/PIMORONI_BADGER2040/lib/badger2040.py
+                    </div>
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class=""
+                     style="background: radial-gradient(#003D4D, #333333); position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+
+                    ## BadgerOS & PicoGraphics
+                    <!-- .element: style="color: white" -->
+
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _Basic Drawing_ Settings - Code
+                    </div>
+
+
+                </div>
+
+
+                <img src="assets/snake2040/badger2040-drawing.png" alt="badger2040-drawing|500"
+                     style="width: 500px; object-fit: fill">
+
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _Basic Drawing_ Settings - Output
+                    </div>
+
+
+                </div>
+
+
+                <img src="assets/snake2040/badger2040-font.png" alt="badger2040-font|600"
+                     style="width: 600px; object-fit: fill">
+
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _Basic Shapes_ - Code
+                    </div>
+
+
+                </div>
+
+
+                <img src="assets/snake2040/badger2040-shapes.png" alt="badger2040-shapes|430"
+                     style="width: 430px; object-fit: fill">
+
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _Basic Shapes_ - Output
+                    </div>
+
+
+                </div>
+
+
+                <img src="assets/snake2040/badger2040-shapes-out.png" alt="badger2040-shapes-out|600"
+                     style="width: 600px; object-fit: fill">
+
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _Displaying Images_ - Code
+                    </div>
+
+
+                </div>
+
+
+                <img src="assets/snake2040/badger2040-img.png" alt="badger2040-img|500"
+                     style="width: 500px; object-fit: fill">
+
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _Displaying Images_ - Output
+                    </div>
+
+
+                </div>
+
+
+                <img src="assets/snake2040/badger2040-qr.png" alt="badger2040-qr|600"
+                     style="width: 600px; object-fit: fill">
+
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _Updating the display_
+                    </div>
+
+
+                </div>
+
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class=""
+                     style="background: radial-gradient(#003D4D, #333333); position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+
+                    ## Game elements
+                    <!-- .element: style="color: white" -->
+
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _Play area and spawn point_
+                    </div>
+
+
+                </div>
+
+
+                <img src="assets/snake2040/snake2040-init.png" alt="Game init|500"
+                     style="width: 500px; object-fit: fill">
+
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _Input and Controls_
+                    </div>
+
+
+                </div>
+
+
+                <img src="assets/snake2040/snake2040-controls.png" alt="Input and Controls|500"
+                     style="width: 500px; object-fit: fill">
+
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _Collision detection_
+                    </div>
+
+
+                </div>
+
+
+                <img src="assets/snake2040/snake2040-collision.png" alt="Collision Detection|400"
+                     style="width: 400px; object-fit: fill">
+
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _Screen updates_
+                    </div>
+
+
+                </div>
+
+
+                <img src="assets/snake2040/snake2040-updates.png" alt="Screen Updates|500"
+                     style="width: 500px; object-fit: fill">
+
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class=""
+                     style="background: radial-gradient(#003D4D, #333333); position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+
+                    ## Demo
+                    <!-- .element: style="color: white" -->
+
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                <div class="has-light-background"
+                     style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly"
+                     align="left">
+
+                    <div class="block">
+
+                        ### _Show me the code_
+                    </div>
+
+
+                </div>
+
+
+                <split even gap="5">
+                    <figure>
+                        <img src="assets/snake2040/snake2040-github.png" alt="qr2|200" style="width: 200px; object-fit: fill">
+
+                        <figcaption>Repo</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="assets/snake2040/snake2040-slides.png" alt="qr2|200" style="width: 200px; object-fit: fill">
+
+                        <figcaption>Slides</figcaption>
+                    </figure>
+                </split>
+
+                <style>
+                    .horizontal_dotted_line {
+                        border-bottom: 2px dotted gray;
+                    }
+
+                    }
+                </style>
+
+                <div class="horizontal_dotted_line"
+                     style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                </div>
+
+                <div class=""
+                     style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end"
+                     align="left">
+
+
+                </div>
+
+                <div class=""
+                     style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center">
+
+                    <i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+                    _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+                    <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_
+                    <!-- .element: style="font-size: 13px" -->
+                </div>
+            </div></script>
+        </section>
+        <section data-markdown>
+            <script type="text/template"><!-- .slide: class="drop" -->
+            <div class=""
+                 style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center"
+                 absolute="true">
+
+                ### Thank You
+
+                - **Web**: _jduabe.dev_
+                - **Mastodon**: _@jordan\@jduabe.dev_
+                - **GitHub**: _@j4ckofalltrades_
+            </div></script>
+        </section>
+    </div>
+</div>
+
+<script src="dist/reveal.js"></script>
+
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script src="plugin/zoom/zoom.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/math/math.js"></script>
+<script src="plugin/mermaid/mermaid.js"></script>
+<script src="plugin/chart/chart.min.js"></script>
+<script src="plugin/chart/plugin.js"></script>
+<script src="plugin/menu/menu.js"></script>
+<script src="plugin/customcontrols/plugin.js"></script>
+
+<script>
+    function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+            var source = arguments[i];
+            for (var key in source) {
+                if (source.hasOwnProperty(key)) {
+                    target[key] = source[key];
+                }
+            }
+        }
+        return target;
+    }
+
+    function isLight(color) {
+        let hex = color.replace('#', '');
+
+        // convert #fff => #ffffff
+        if (hex.length == 3) {
+            hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+        }
+
+        const c_r = parseInt(hex.substr(0, 2), 16);
+        const c_g = parseInt(hex.substr(2, 2), 16);
+        const c_b = parseInt(hex.substr(4, 2), 16);
+        const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+        return brightness > 155;
+    }
+
+    var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+    var isLight = isLight(bgColor);
+
+    if (isLight) {
+        document.body.classList.add('has-light-background');
+    } else {
+        document.body.classList.add('has-dark-background');
+    }
+
+    // default options to init reveal.js
+    var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+            RevealMarkdown,
+            RevealHighlight,
+            RevealZoom,
+            RevealNotes,
+            RevealMath.MathJax3,
+            RevealMermaid,
+            RevealChart,
+            RevealCustomControls,
+            RevealMenu,
+        ],
+
+
+        allottedTime: 120 * 1000,
+
+        mathjax3: {
+            mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+        },
+        markdown: {
+            gfm: true,
+            mangle: true,
+            pedantic: false,
+            smartLists: false,
+            smartypants: false,
+        },
+
+        mermaid: {
+            theme: isLight ? 'default' : 'dark',
+        },
+
+        customcontrols: {
+            controls: [
+                {
+                    id: 'toggle-overview',
+                    title: 'Toggle overview (O)',
+                    icon: '<i class="fa fa-th"></i>',
+                    action: 'Reveal.toggleOverview();'
+                },
+            ]
+        },
+        menu: {
+            loadIcons: false
+        }
+    };
+
+    // options from URL query string
+    var queryOptions = Reveal().getQueryHash() || {};
+
+    var options = extend(defaultOptions, {
+        "width": 960,
+        "height": 540,
+        "margin": "0",
+        "maxScale": "4",
+        "controls": true,
+        "progress": true,
+        "slideNumber": false,
+        "transition": "none",
+        "transitionSpeed": "normal"
+    }, queryOptions);
+</script>
+
+<script>
+    Reveal.initialize(options);
+</script>
+</body>
+
+<!-- created with Advanced Slides -->
+</html>
