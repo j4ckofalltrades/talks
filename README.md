@@ -7,6 +7,7 @@ Collection of talks in HTML, Markdown, and PDF formats.
 - [Git Deep Dive](https://talks.jduabe.dev/git-deep-dive)
 - [Trusted Publishers in PyPI](https://talks.jduabe.dev/pypi-trusted-publisher)
 - [Git Hooks](https://talks.jduabe.dev/git-hooks)
+- [Snake2040](https://talks.jduabe.dev/snake2040)
 
 ##  License
 
