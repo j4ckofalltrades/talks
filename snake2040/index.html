@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>Snake2040</title>
+    <title></title>
     <link rel="stylesheet" href="dist/reveal.css" />
     <link rel="stylesheet" href="dist/theme/consult.css" id="theme" />
     <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
@@ -195,6 +195,7 @@ _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 
 - 2.9" black and white E Ink® display (296 x 128 pixels)
 - Powered by RP2040 (Dual Arm Cortex M0+ running at up to 133Mhz with 264kB of SRAM)
+- 2MB of QSPI flash
 - Five front user buttons
 - USB-C connector for power and programming
 - JST-PH connector for attaching a battery (input range 2.7V - 6V)
@@ -268,15 +269,46 @@ _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 </aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-<div class="" style="background: radial-gradient(#003D4D, #333333); position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+### _Badger2040 digital badge_
+</div>
+
+
+</div>
 
 
 
 
 
-## Software
- <!-- .element: style="color: white" -->
 
+<img src="https://res.cloudinary.com/j4ckofalltrades/image/upload/v1688813596/blog/badger2040_x9iaec.jpg" alt="digital badge|500" style="width: 500px; object-fit: fill">
+
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+_jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+<i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
 </div>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -285,10 +317,82 @@ _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 
  <div class="block">
 
-### _(Flashing) Firmware_
+### _Badger2040 with peripherals_
 </div>
 
 
+</div>
+
+
+
+
+
+
+<img src="assets/snake2040/badger2040-qw-sensor.jpg" alt="badger2040-peripherals|500" style="width: 500px; object-fit: fill">
+
+
+
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+##### Source: https://www.tomshardware.com/reviews/pimoroni-badger-2040
+</div>
+
+
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+_jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+<i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="background: radial-gradient(#003D4D, #333333); position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+
+
+
+## Software
+
+ <!-- .element: style="color: white" -->
+
+</div>
+</div>
+
+<aside class="notes"><p>Look at MicroPython, available tooling for writing programs, what functions are available in terms of drawing on the display, and input handling (buttons).</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+### _MicroPython_
+</div>
+
+
+</div>
+
+<div class="has-light-background" style="border-radius: 15px; background-color: white; position: absolute; left: 3%; top: 15%; height: 70%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
 </div>
 
 <div class="" style="position: absolute; left: 5%; top: 17%; height: 66%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
@@ -299,16 +403,15 @@ _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 
 
 
-The Badger2040 firmware is hosted on GitHub with two variants.
+<img src="assets/snake2040/micropython.jpg" alt="micropython|300" style="width: 300px; object-fit: fill">
 
-- `pimoroni-badger2040-vX.X.X-`**micropython-with-badger-os**`.uf2`
-- `pimoroni-badger2040-vX.X.X-`**micropython**`.uf2`
 
-To install (or upgrade to a newer version):
+- A lean implementation of Python 3 designed for microcontrollers and embedded systems
+- Includes a subset of Python standard libraries
+- Requires minimal RAM (as little as 16KB) and storage space (256KB flash)
+- Ships with an interactive REPL (Read-Evaluate-Print Loop)
+- Provides hardware-specific modules for direct control of microcontroller peripherals
 
-1. Connect the device your computer.
-2. Enter into bootloader mode by holding the `BOOT/USR` button and pressing the `RST` button.
-3. Drag and drop the `*.uf2` file to the `RPI-RP2` drive.
 
 
 </div>
@@ -335,7 +438,12 @@ To install (or upgrade to a newer version):
 _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 <i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
 </div>
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+</div>
+
+<aside class="notes"><p>Lean implementation of Python that is designed to operate on constrained environments i.e. devices with limited resources.</p>
+<p>Implements the features of Python 3.4 and select features of Python 3.5 and newer.</p>
+<p>Supported hardware: RP2040/RP2340, ESP32, STM32, micro:bit, pyboard (official reference board), Arduino.</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 <div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
@@ -424,13 +532,10 @@ _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 
  <div class="block">
 
-### _MicroPython_
+### _(Flashing) Firmware_
 </div>
 
 
-</div>
-
-<div class="has-light-background" style="border-radius: 15px; background-color: white; position: absolute; left: 3%; top: 15%; height: 70%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
 </div>
 
 <div class="" style="position: absolute; left: 5%; top: 17%; height: 66%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
@@ -441,14 +546,16 @@ _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 
 
 
-<img src="assets/snake2040/micropython.jpg" alt="micropython|350" style="width: 350px; object-fit: fill">
+The Badger2040 firmware is hosted on GitHub with two variants.
 
+- `pimoroni-badger2040-vX.X.X-`**micropython-with-badger-os**`.uf2`
+- `pimoroni-badger2040-vX.X.X-`**micropython**`.uf2`
 
-- A lean implementation of Python 3(.4) designed for microcontrollers and embedded systems
-- Includes a subset of Python standard libraries
-- Requires minimal RAM (as little as 16KB) and storage space (256KB flash)
-- Ships with an interactive REPL (Read-Evaluate-Print Loop)
-- Provides hardware-specific modules for direct control of microcontroller peripherals
+To install (or upgrade to a newer version):
+
+1. Connect the device your computer.
+2. Enter into bootloader mode by holding the `BOOT/USR` button and pressing the `RST` button.
+3. Drag and drop the `*.uf2` file to the `RPI-RP2` drive.
 
 
 
@@ -478,8 +585,7 @@ _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 </div>
 </div>
 
-<aside class="notes"><p>Implements the features of Python 3.4 and select features of Python 3.5 and newer.</p>
-<p>Supported hardware: RPxxxx, ESP32, STM32, micro:bit, pyboard (official reference board), Arduino.</p>
+<aside class="notes"><p>The <em>badger_os</em> firmware variant will wipe existing files.</p>
 </aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -549,7 +655,7 @@ _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 </div>
 
 <aside class="notes"><p>Pimorini&#39;s unified graphics and display library for driving displays from your Pico in MicroPython.</p>
-<p>Going through sample functions of how to draw and update the screen.</p>
+<p>Walk through available functions that can be used for drawing and updating the display.</p>
 </aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -557,7 +663,7 @@ _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 
  <div class="block">
 
-### _Basic Drawing_ Settings - Code
+### _Text_ - Code
 </div>
 
 
@@ -601,7 +707,7 @@ _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 
  <div class="block">
 
-### _Basic Drawing_ Settings - Output
+### _Text_ - Output
 </div>
 
 
@@ -645,7 +751,7 @@ _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 
  <div class="block">
 
-### _Basic Shapes_ - Code
+### _Shapes_ - Code
 </div>
 
 
@@ -689,7 +795,7 @@ _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 
  <div class="block">
 
-### _Basic Shapes_ - Output
+### _Shapes_ - Output
 </div>
 
 
@@ -734,7 +840,7 @@ _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 
  <div class="block">
 
-### _Displaying Images_ - Code
+### _Images_ - Code
 </div>
 
 
@@ -778,7 +884,7 @@ _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 
  <div class="block">
 
-### _Displaying Images_ - Output
+### _Images_ - Output
 </div>
 
 
@@ -923,10 +1029,14 @@ _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 
 
 ## Game elements
+
  <!-- .element: style="color: white" -->
 
 </div>
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+</div>
+
+<aside class="notes"><p>Walk through writing the snake game using the available functions previously discussed.</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 <div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
@@ -1027,7 +1137,7 @@ _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 
  <div class="block">
 
-### _Input and Controls_
+### _Input and controls_
 </div>
 
 
@@ -1111,7 +1221,7 @@ _jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
 </div>
 </div>
 
-<aside class="notes"><p>Game loop - determine where to draw the next position of the snake head then determine appropriate updates.</p>
+<aside class="notes"><p>Game loop - determine where to draw the next position of the snake head then determine appropriate updates</p>
 </aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
