@@ -8,6 +8,8 @@ Collection of talks in HTML, Markdown, and PDF formats.
 - [Trusted Publishers in PyPI](https://talks.jduabe.dev/pypi-trusted-publisher)
 - [Git Hooks](https://talks.jduabe.dev/git-hooks)
 - [Snake2040](https://talks.jduabe.dev/snake2040)
+- [Trusted Publishing & Digital Attestations in the OSS Ecosystem](https://talks.jduabe.dev/trusted-publishing-attestations)
+- [git config --make-git-work-for-you](https://talks.jduabe.dev/git-config)
 
 ##  License
 
