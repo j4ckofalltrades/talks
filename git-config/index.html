@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>git config --make-git-work-for-you</title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/consult.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+	<link rel="stylesheet" href="plugin/chalkboard/style.css">
+
+	<link rel="stylesheet" href="plugin/reveal-pointer/pointer.css" />
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" template="" ="tpl-con-title" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.callout{
+  width: 700px;
+  font-size: 20px;
+} 
+</style>
+
+
+
+# git config --make-it-work-for-you
+
+<br ></br>
+
+<div class="block">
+
+### Jordan Duabe, _Software Engineer_
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _Autocorrect_
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Enable autocorrect
+
+</div>
+</div>
+<div class="callout-content">
+
+`git config --global help.autocorrect prompt`
+
+</div>
+</div>
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+_jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+<i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+git will search for the closest matching valid command and suggest that to you.
+
+
+```bash
+$ git branhc
+WARNING: You called a Git command named 'branhc', which does not exist.
+Run 'branch' instead? (y/N)y
+* main
+
+$ git com
+git: 'com' is not a git command. See 'git --help'.
+
+The most similar commands are
+        commit
+        column
+```
+
+notes:
+
+A prompt will only be shown if there is only one command that’s a significantly close match, otherwise it will exit and list all the commands that are close matches.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _Aliases_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Configure aliases
+
+</div>
+</div>
+<div class="callout-content">
+
+`git config --global alias.st "status --short"`
+
+</div>
+</div>
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+_jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+<i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Alternatively you can edit your `.gitconfig` file directly.
+
+If you have any external scripts, you can call them from git with `!/path/to/your/script`.
+
+```text
+[alias]
+  bbr = !better-git-branch.sh
+  br = branch
+  cm = commit
+  di = diff
+  dis = diff --staged
+  lol = log --oneline
+  rs = restore
+  rss = restore --staged
+  st = status -sb
+  sh = stash
+  sw = switch
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Autocomplete also works for configured aliases.
+
+```bash
+# tab completion works for all aliases
+$ git rs
+rs    rss
+
+# if autocorrect is enabled
+$ git cx
+WARNING: You called a Git command named 'cx', which does not exist.
+Run 'cm' instead? (y/N)y
+On branch main
+nothing to commit, working tree clean
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _Sort branches_
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Sort branches by the most recent commit date
+
+</div>
+</div>
+<div class="callout-content">
+
+`git config --global branch.sort -committerdate`
+
+</div>
+</div>
+
+```bash
+# branches with the most recent commit are listed first
+$ git branch
+  branch-with-most-recent-commit
+  feat-2
+  bugfix-1
+* main
+```
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+_jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+<i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _Sort tags_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Better tag sorting
+
+</div>
+</div>
+<div class="callout-content">
+
+`git config --global tag.sort version:refname`
+
+</div>
+</div>
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+_jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+<i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+This setting treats version numbers as integers instead of the full tag name as a string.
+
+```bash
+# default "sort" for tags
+$ git tag
+1.0.0
+1.0.1000
+1.0.101
+1.0.2
+
+# when tag.sort is set to version:refname
+$ git tag
+1.0.0
+1.0.2
+1.0.101
+1.0.1000
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _Fetch_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Better fetch
+
+</div>
+</div>
+<div class="callout-content">
+
+`git config --global fetch.prune true`
+
+`git config --global fetch.pruneTags true`
+
+</div>
+</div>
+
+notes:
+
+Deletes references to all branches and tags that do not exist on the remote repository. This will not delete local branches or tags. 
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+_jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+<i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _Push_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Better push
+
+</div>
+</div>
+<div class="callout-content">
+
+`git config --global push.default simple`
+
+`git config --global push.autoSetupRemote true`
+
+`git config --global push.followTags true`
+
+</div>
+</div>
+
+notes:
+
+Simplifies pushing to just `git push` in most cases.
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+_jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+<i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+`push.autoSetupRemote = true` gets rid of the following error which you might be familiar with:
+
+```bash
+$ git push
+fatal: The current branch my-branch-name has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin my-branch-name
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _Diff_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Better diff
+
+</div>
+</div>
+<div class="callout-content">
+
+`git config --global diff.colorMoved plain`
+
+`git config --global diff.mnemonicPrefix true`
+
+`git config --global diff.renames true`
+
+`git config --global diff.algorithm histogram`
+
+</div>
+</div>
+
+notes:
+
+`diff.colorMoved` displays moved lines in a different color from added/deleted lines while diff.renames detects if a file has been renamed.
+
+`diff.mnemonicPrefix` instructs git to show a different prefix (defaults to a/, b/) depending on what is being compared e.g. git diff will use i/ and w/ as it compares (i)ndex and (w)ork tree. Refer to the docs for the full list.
+
+There are 4 diff algorithms that are shipped with git: myers (default), minimal, patience, and histogram.
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+_jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+<i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## _myers vs histogram algorithm_
+
+```diff
+-- myers
+void func1() {
+     x += 1
++}
++
++void functhreehalves() {
++    x += 1.5
+}
+ 
+void func2() {
+     x += 2
+}
+```
+
+```diff
+-- histogram
+void func1() {
+     x += 1
+}
+
++void functhreehalves() {
++    x += 1.5
++}
++
+void func2() {
+     x += 2
+}
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _Editor_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Configure git to use the best text editor
+
+</div>
+</div>
+<div class="callout-content">
+
+`git config --global core.editor vim`
+
+</div>
+</div>
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+_jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+<i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _Global gitignore_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Setup a global `.gitignore` for commonly ignored files
+
+</div>
+</div>
+<div class="callout-content">
+
+`git config --global core.excludesfile ~/.gitignore-global`
+
+</div>
+</div>
+
+```ini
+.DS_Store
+*.orig
+*.swp
+
+.idea/
+.vscode/
+```
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+_jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+<i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _External tooling: delta_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Use delta as a pager 
+
+</div>
+</div>
+<div class="callout-content">
+
+`git config --global core.pager delta`
+
+`git config --global interactive.diffFilter 'delta --color-only'`
+
+</div>
+</div>
+
+notes:
+
+_delta_ is a syntax-highlighting pager for git, diff, grep, and blame output.
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+_jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+<i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _delta side-by-side diff_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<img src="https://res.cloudinary.com/j4ckofalltrades/image/upload/f_auto,q_auto/v1/blog/git-delta-side-by-side" alt="git-delta side-by-side diff" style="object-fit: scale-down">
+
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+_jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+<i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _Rebase_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Quality of life changes if you use _rebase_ as your merge strategy
+
+</div>
+</div>
+<div class="callout-content">
+
+`git config --global pull.rebase true`
+
+`git config --global rebase.autoSquash true`
+
+`git config --global rebase.autoStash true`
+
+`git config --global rebase.updateRefs true`
+
+</div>
+</div>
+
+notes:
+
+`pull.rebase` tells git what to do when you run into conflicts when pulling changes.
+
+`rebase.autoStash` automatically stashes your working tree changes (if there are any) when the _rebase_ operation starts and applies it after the operation ends.
+
+`rebase.updateRefs` automatically force-update any branches that point to commits that are being rebased.
+
+`rebase.autoSquash` used in combination with fixup commits allows you to amend a series of commits automatically to maintain a clean history.
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+_jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+<i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _Reuse Recorded Resolution_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Don't Repeat Yourself (DRY) for resolving conflicts
+
+</div>
+</div>
+<div class="callout-content">
+
+`git config --global rerere.enabled true`
+
+`git config --global rerere.autoUpdate true`
+
+</div>
+</div>
+
+notes:
+
+This setting is useful if you're rebasing multiple commits and run into the same conflict again and again.
+
+With rerere.enabled set, git will remember how to resolve a conflict and reuse it when it encounters the same conflict.
+
+`rerere.autoUpdate` automatically stages the changes that resulted from the resolution.
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+_jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+<i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _Signing commits and tags_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Configure git to sign commits and tags with a GPG key
+
+</div>
+</div>
+<div class="callout-content">
+
+`git config --global user.signingKey XXXX` # what key to use
+
+`git config --global commit.gpgSign true` # sign commits
+
+`git config --global commit.gpgSign true` # sign tags
+
+</div>
+</div>
+
+notes:
+
+You can use either `GPG` or `SSH` to sign tags and commits locally.
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+_jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+<i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Alternatively, you can also sign commits and tags with a SSH key.
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Configure git to sign commits and tags with a SSH key
+
+</div>
+</div>
+<div class="callout-content">
+
+`git config --global gpg.format ssh`
+
+`git config --global user.signingkey /path/to/.ssh/key.pub`
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Forges e.g. GitHub will then mark signed commits (or tags) that are verifiable as _Verified_.
+
+<img src="https://res.cloudinary.com/j4ckofalltrades/image/upload/f_auto,q_auto/v1/blog/gh-verified-commit" alt="GitHub verified commit" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _Conditional includes_
+</div>
+
+
+</div>
+
+
+
+
+
+
+```bash
+$ tree
+.
+├── .gitconfig
+├── .gitconfig-oss
+├── .gitconfig-work
+├── oss
+│   ├── oss-repo-1
+│   └── oss-repo-2
+└── work
+    └── work-repo-1
+```
+
+
+```bash
+# .gitconfig
+[includeIf "gitdir:~/oss/"]
+  path = ~/.gitconfig-oss
+
+[includeIf "gitdir:~/work/"]
+  path = ~/.gitconfig-work
+
+# .gitconfig.oss
+[user]
+	email = my-oss-email.com
+	signingKey = ABC123DEF
+
+# gitconfig.work
+[user]
+	email = my-work-email.com
+	signingKey = 101XYZ101
+```
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<i class="fa fa-globe"></i><!-- .element: style="margin-left: 630px" -->
+_jduabe.dev_&nbsp;&nbsp;<!-- .element: style="font-size: 13px" -->
+<i class="fab fa-mastodon fa-lg"></i> _&#64;jordan&#64;jduabe.dev_<!-- .element: style="font-size: 13px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### _Takeaways_
+
+- Experiment and see what fits with your workflow.
+- The best configuration is the one that works for you.
+
+<br ></br>
+
+### _Recommended reading_
+
+- [Pro Git Book](https://git-scm.com/book/en/v2)
+- [Julia Evans' blog posts](https://jvns.ca/categories/git/)
+- [So You Think You Know Git?](https://speakerdeck.com/schacon/so-you-think-you-know-git)
+- [Jujutsu](https://github.com/jj-vcs/jj)
+- [What's in my .gitconfig?](https://jduabe.dev/posts/2025/git-config/)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## _Thank You_
+
+<img src="assets/git-config/qr-code.png" alt="git config talk QR code|300" style="width: 300px; object-fit: fill">
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/menu/menu.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+	<script src="plugin/chalkboard/plugin.js"></script>
+	<script src="plugin/reveal-pointer/pointer.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+	      RevealPointer,
+		  RevealChalkboard, 
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+				{ icon: '<i class="fa fa-pen-square"></i>',
+				title: 'Toggle chalkboard (B)',
+				action: 'RevealChalkboard.toggleChalkboard();'
+				},
+				{ icon: '<i class="fa fa-pen"></i>',
+				title: 'Toggle notes canvas (C)',
+				action: 'RevealChalkboard.toggleNotesCanvas();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":540,"margin":"0","maxScale":"4","controls":true,"progress":true,"slideNumber":false,"transition":"none","transitionSpeed":"normal"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
