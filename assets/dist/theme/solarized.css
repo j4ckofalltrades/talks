@@ -1,26 +1,21 @@
-@import "./fonts/league-gothic/league-gothic.css";
+@import "fonts/league-gothic/league-gothic.css";
 @import "https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic";
-.reveal .has-dark-background,
-.reveal .has-dark-background h1,
-.reveal .has-dark-background h2,
-.reveal .has-dark-background h3,
-.reveal .has-dark-background h4,
-.reveal .has-dark-background h5,
-.reveal .has-dark-background h6 {
-  color: #fff;
+html * {
+  color-profile: sRGB;
+  rendering-intent: auto;
 }
 :root {
-  --r-background-color: #f7f3de;
+  --r-background-color: #fdf6e3;
   --r-main-font: Lato, sans-serif;
   --r-main-font-size: 40px;
-  --r-main-color: #333;
+  --r-main-color: #657b83;
   --r-block-margin: 20px;
   --r-heading-margin: 0 0 20px 0;
   --r-heading-font:
     League Gothic,
     Impact,
     sans-serif;
-  --r-heading-color: #333;
+  --r-heading-color: #586e75;
   --r-heading-line-height: 1.2;
   --r-heading-letter-spacing: normal;
   --r-heading-text-transform: uppercase;
@@ -31,18 +26,7 @@
   --r-heading4-font-weight: normal;
   --r-heading5-font-weight: normal;
   --r-heading6-font-weight: normal;
-  --r-heading1-text-shadow:
-    0 1px 0 #ccc,
-    0 2px 0 #c9c9c9,
-    0 3px 0 #bbb,
-    0 4px 0 #b9b9b9,
-    0 5px 0 #aaa,
-    0 6px 1px rgba(0, 0, 0, 0.1),
-    0 0 5px rgba(0, 0, 0, 0.1),
-    0 1px 3px rgba(0, 0, 0, 0.3),
-    0 3px 5px rgba(0, 0, 0, 0.2),
-    0 5px 10px rgba(0, 0, 0, 0.25),
-    0 20px 20px rgba(0, 0, 0, 0.15);
+  --r-heading1-text-shadow: none;
   --r-heading1-size: 3.77em;
   --r-heading2-size: 2.11em;
   --r-heading3-size: 1.55em;
@@ -50,20 +34,14 @@
   --r-heading5-size: 0.8em;
   --r-heading6-size: 0.6em;
   --r-code-font: monospace;
-  --r-link-color: #8b743d;
-  --r-link-color-dark: #564826;
-  --r-link-color-hover: #c0a86e;
-  --r-selection-background-color: rgba(79, 64, 28, 0.99);
+  --r-link-color: #268bd2;
+  --r-link-color-dark: #1a6091;
+  --r-link-color-hover: #78b9e6;
+  --r-selection-background-color: #d33682;
   --r-selection-color: #fff;
 }
 .reveal-viewport {
-  background: rgb(247, 242, 211);
-  background: -moz-radial-gradient(center, circle cover, rgb(255, 255, 255) 0%, rgb(247, 242, 211) 100%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgb(255, 255, 255)), color-stop(100%, rgb(247, 242, 211)));
-  background: -webkit-radial-gradient(center, circle cover, rgb(255, 255, 255) 0%, rgb(247, 242, 211) 100%);
-  background: -o-radial-gradient(center, circle cover, rgb(255, 255, 255) 0%, rgb(247, 242, 211) 100%);
-  background: -ms-radial-gradient(center, circle cover, rgb(255, 255, 255) 0%, rgb(247, 242, 211) 100%);
-  background: radial-gradient(center, circle cover, rgb(255, 255, 255) 0%, rgb(247, 242, 211) 100%);
+  background: #fdf6e3;
   background-color: var(--r-background-color);
 }
 .reveal {

@@ -1,47 +1,54 @@
-@import "./fonts/league-gothic/league-gothic.css";
-@import "https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic";
-html * {
-  color-profile: sRGB;
-  rendering-intent: auto;
+@import "fonts/source-sans-pro/source-sans-pro.css";
+.reveal .has-dark-background,
+.reveal .has-dark-background h1,
+.reveal .has-dark-background h2,
+.reveal .has-dark-background h3,
+.reveal .has-dark-background h4,
+.reveal .has-dark-background h5,
+.reveal .has-dark-background h6 {
+  color: #fff;
 }
 :root {
-  --r-background-color: #fdf6e3;
-  --r-main-font: Lato, sans-serif;
-  --r-main-font-size: 40px;
-  --r-main-color: #657b83;
+  --r-background-color: #fff;
+  --r-main-font:
+    Source Sans Pro,
+    Helvetica,
+    sans-serif;
+  --r-main-font-size: 42px;
+  --r-main-color: #222;
   --r-block-margin: 20px;
   --r-heading-margin: 0 0 20px 0;
   --r-heading-font:
-    League Gothic,
-    Impact,
+    Source Sans Pro,
+    Helvetica,
     sans-serif;
-  --r-heading-color: #586e75;
+  --r-heading-color: #222;
   --r-heading-line-height: 1.2;
   --r-heading-letter-spacing: normal;
   --r-heading-text-transform: uppercase;
   --r-heading-text-shadow: none;
-  --r-heading1-font-weight: normal;
-  --r-heading2-font-weight: normal;
-  --r-heading3-font-weight: normal;
-  --r-heading4-font-weight: normal;
-  --r-heading5-font-weight: normal;
-  --r-heading6-font-weight: normal;
+  --r-heading1-font-weight: 600;
+  --r-heading2-font-weight: 600;
+  --r-heading3-font-weight: 600;
+  --r-heading4-font-weight: 600;
+  --r-heading5-font-weight: 600;
+  --r-heading6-font-weight: 600;
   --r-heading1-text-shadow: none;
-  --r-heading1-size: 3.77em;
-  --r-heading2-size: 2.11em;
-  --r-heading3-size: 1.55em;
+  --r-heading1-size: 2.5em;
+  --r-heading2-size: 1.6em;
+  --r-heading3-size: 1.3em;
   --r-heading4-size: 1em;
   --r-heading5-size: 0.8em;
   --r-heading6-size: 0.6em;
   --r-code-font: monospace;
-  --r-link-color: #268bd2;
-  --r-link-color-dark: #1a6091;
-  --r-link-color-hover: #78b9e6;
-  --r-selection-background-color: #d33682;
+  --r-link-color: #2a76dd;
+  --r-link-color-dark: #1a53a1;
+  --r-link-color-hover: #6ca0e8;
+  --r-selection-background-color: #98bdef;
   --r-selection-color: #fff;
 }
 .reveal-viewport {
-  background: #fdf6e3;
+  background: #fff;
   background-color: var(--r-background-color);
 }
 .reveal {

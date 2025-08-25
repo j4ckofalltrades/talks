@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <title></title>
-    <link rel="stylesheet" href="dist/reveal.css" />
-    <link rel="stylesheet" href="dist/theme/consult.css" id="theme" />
-    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
-	<link rel="stylesheet" href="css/layout.css" />
-	<link rel="stylesheet" href="plugin/customcontrols/style.css">
-	<link rel="stylesheet" href="plugin/chalkboard/style.css">
+    <link rel="stylesheet" href="../assets/dist/reveal.css" />
+    <link rel="stylesheet" href="../assets/dist/theme/consult.css" id="theme" />
+    <link rel="stylesheet" href="../assets/plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="../assets/css/layout.css" />
+	<link rel="stylesheet" href="../assets/plugin/customcontrols/style.css">
+	<link rel="stylesheet" href="../assets/plugin/chalkboard/style.css">
+	<link rel="stylesheet" href="../assets/plugin/reveal-pointer/pointer.css" />
 
-	<link rel="stylesheet" href="plugin/reveal-pointer/pointer.css" />
-
-
-    <script defer src="dist/fontawesome/all.min.js"></script>
+    <script defer src="../assets/dist/fontawesome/all.min.js"></script>
 
 	<script type="text/javascript">
 		var forgetPop = true;
@@ -62,7 +60,7 @@
 				fitElement(element, start, size);
 			} else {
 				fitElement(element, size, end);
-			}		
+			}
 		}
 
 
@@ -92,19 +90,12 @@
 <style>
 .mermaid{
   width: 600px;
-} 
+}
 </style>
-
 
 
 # Trusted Publishing & Digital Attestations in the OSS Ecosystem
 
-<br ></br>
-
-<div class="block">
-
-### Jordan Duabe, _Software Engineer_
-</div>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -131,8 +122,7 @@
 
 ### Jordan Duabe
 
-- Software engineer (web and mobile applications)
-- Mechanical keyboard enthusiast
+- SWE, mechanical keyboard enthusiast
 - [_jordan&#64;jduabe.dev_](mailto:jordan@jduabe.dev)
 - [_&#64;j4ckofalltrades&#64;infosec.exchange_](infosec.exchange/@j4ckofalltrades)
 
@@ -142,7 +132,7 @@
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -201,7 +191,7 @@ GitHub-->>PyPI: Upload package
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -247,7 +237,7 @@ GitHub-->>PyPI: Upload package
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -285,7 +275,7 @@ GitHub-->>PyPI: Upload package
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -353,7 +343,7 @@ jobs:
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -396,7 +386,7 @@ jobs:
 - If compromised, they provide persistent access until revoked
 - Oftentimes do not have granularity over permissions
 
-<img src="assets/trusted-publishing/cant-leak-tokens.png" alt="Cant leak tokens roll safe meme|450" style="width: 450px; object-fit: fill">
+<img src="../assets/trusted-publishing/cant-leak-tokens.png" alt="Cant leak tokens roll safe meme|450" style="width: 450px; object-fit: fill">
 
 <!-- .element: class="fragment" -->
 
@@ -406,7 +396,7 @@ jobs:
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -438,11 +428,10 @@ jobs:
 
 
 
-- RubyGems (Ruby)
-- pub.dev (Dart)
-- crates.io (Rust)
-- JSR (JavaScript)
-- npmjs.com (JavaScript)
+- Ruby's RubyGems
+- Dart's Pub Package Registry
+- Rust's Crates
+- JavaScript's npm and JSR
 
 
 </div>
@@ -450,7 +439,7 @@ jobs:
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -500,7 +489,7 @@ PyPI uses the [in-toto Attestation Framework](https://github.com/in-toto/attesta
 - [SLSA Provenance](https://slsa.dev/spec/v1.0/provenance)  (_build provenance_)
 - [PyPI Publish](https://docs.pypi.org/attestations/publish/v1/) (_publish provenance_)
 
-<img src="assets/trusted-publishing/arewepep740yet.png" alt="Python packages with provenance|300" style="width: 300px; object-fit: fill">
+<img src="../assets/trusted-publishing/arewepep740yet.png" alt="Python packages with provenance|300" style="width: 300px; object-fit: fill">
 
 
 
@@ -515,7 +504,7 @@ Digitally signed, publicly verifiable statements about Python packages, includin
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -550,7 +539,7 @@ Digitally signed, publicly verifiable statements about Python packages, includin
 
 
 
-<img src="assets/trusted-publishing/in-toto-v1.png" alt="in-toto-v1|450" style="width: 450px; object-fit: fill">
+<img src="../assets/trusted-publishing/in-toto-v1.png" alt="in-toto-v1|450" style="width: 450px; object-fit: fill">
 
 
 
@@ -559,7 +548,7 @@ Digitally signed, publicly verifiable statements about Python packages, includin
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -594,7 +583,7 @@ Digitally signed, publicly verifiable statements about Python packages, includin
 
 
 
-<img src="assets/trusted-publishing/pypi-attestation-sigstore.png" alt="pypi-attestation-sigstore|580" style="width: 580px; object-fit: fill">
+<img src="../assets/trusted-publishing/pypi-attestation-sigstore.png" alt="pypi-attestation-sigstore|580" style="width: 580px; object-fit: fill">
 
 
 
@@ -603,7 +592,7 @@ Digitally signed, publicly verifiable statements about Python packages, includin
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -644,7 +633,7 @@ Digitally signed, publicly verifiable statements about Python packages, includin
 - Using the PyPA official [gh-action-pypi-publish](https://github.com/pypa/gh-action-pypi-publish) GitHub Action.
 - Attestations enabled by default as of `v.1.11.0 and newer`.
 
-```yaml
+```text
 jobs:
   pypi-publish:
     name: upload release to PyPI
@@ -667,7 +656,7 @@ jobs:
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -702,7 +691,7 @@ jobs:
 
 
 
-<img src="assets/trusted-publishing/pypi-provenance.png" alt="powerline-k8s provenance in PyPI|470" style="width: 470px; object-fit: fill">
+<img src="../assets/trusted-publishing/pypi-provenance.png" alt="powerline-k8s provenance in PyPI|470" style="width: 470px; object-fit: fill">
 
 
 
@@ -711,7 +700,7 @@ jobs:
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -751,7 +740,7 @@ jobs:
 
 Route: `GET /integrity/<project>/<version>/<filename>/provenance`
 
-```bash
+```text
 $ http get https://pypi.org/integrity/powerline-k8s/1.5.4/powerline_k8s-1.5.4.tar.gz/provenance \
 > | jq -r '.attestation_bundles[0].attestations[0].envelope.statement' \
 > | base64 -d \
@@ -767,8 +756,7 @@ $ http get https://pypi.org/integrity/powerline-k8s/1.5.4/powerline_k8s-1.5.4.ta
       }
     }
   ],
-  "predicateType": "https://docs.pypi.org/attestations/publish/v1",
-  "predicate": null
+  "predicateType": "https://docs.pypi.org/attestations/publish/v1"
 }
 ```
 
@@ -778,7 +766,7 @@ $ http get https://pypi.org/integrity/powerline-k8s/1.5.4/powerline_k8s-1.5.4.ta
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -834,7 +822,7 @@ $ http get https://pypi.org/integrity/powerline-k8s/1.5.4/powerline_k8s-1.5.4.ta
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -863,7 +851,7 @@ $ http get https://pypi.org/integrity/powerline-k8s/1.5.4/powerline_k8s-1.5.4.ta
 
 
 
-<img src="assets/trusted-publishing/cpython-release-signer.png" alt="CPython release signer details|300" style="width: 300px; object-fit: fill">
+<img src="../assets/trusted-publishing/cpython-release-signer.png" alt="CPython release signer details|300" style="width: 300px; object-fit: fill">
 
 
 ```bash
@@ -886,7 +874,7 @@ $ OK: Python-3.14.0rc1.tgz
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -918,15 +906,11 @@ $ OK: Python-3.14.0rc1.tgz
 
 <div class="" style="position: absolute; left: 5%; top: 17%; height: 66%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
 
-
-
-
-
-
-
-- Tells us where a package came from but not if it is trustworthy
-- Only good in so far as they’re actually verified
-- Not a _panacea_ -- one step that improves software supply chain security 
+- Trusted publishing improves security by removing the need for a preexisting shared secret
+- Digital attestations provide verifiable provenance for Python package distributions
+- Digital attestations impose additional sophistication requirements
+- Downstream verification -- integration with tooling like `pip` and `uv`
+- Not a _panacea_ -- one step that improves software supply chain security
 
 
 </div>
@@ -934,7 +918,7 @@ $ OK: Python-3.14.0rc1.tgz
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -950,24 +934,24 @@ $ OK: Python-3.14.0rc1.tgz
 
 ## _Thank You_
 
-<img src="assets/trusted-publishing/qr-code.png" alt="Trusted Publishing and Digital Attestations talk QR code|300" style="width: 300px; object-fit: fill">
+<img src="../assets/trusted-publishing/qr-code.png" alt="Trusted Publishing and Digital Attestations talk QR code|300" style="width: 300px; object-fit: fill">
 </div></script></section></div>
     </div>
 
-    <script src="dist/reveal.js"></script>
+    <script src="../assets/dist/reveal.js"></script>
 
-    <script src="plugin/markdown/markdown.js"></script>
-    <script src="plugin/highlight/highlight.js"></script>
-    <script src="plugin/zoom/zoom.js"></script>
-    <script src="plugin/notes/notes.js"></script>
-    <script src="plugin/math/math.js"></script>
-	<script src="plugin/mermaid/mermaid.js"></script>
-	<script src="plugin/chart/chart.min.js"></script>
-	<script src="plugin/chart/plugin.js"></script>
-	<script src="plugin/menu/menu.js"></script>
-	<script src="plugin/customcontrols/plugin.js"></script>
-	<script src="plugin/chalkboard/plugin.js"></script>
-	<script src="plugin/reveal-pointer/pointer.js"></script>
+    <script src="../assets/plugin/markdown/markdown.js"></script>
+    <script src="../assets/plugin/highlight/highlight.js"></script>
+    <script src="../assets/plugin/zoom/zoom.js"></script>
+    <script src="../assets/plugin/notes/notes.js"></script>
+    <script src="../assets/plugin/math/math.js"></script>
+	<script src="../assets/plugin/mermaid/mermaid.js"></script>
+	<script src="../assets/plugin/chart/chart.min.js"></script>
+	<script src="../assets/plugin/chart/plugin.js"></script>
+	<script src="../assets/plugin/menu/menu.js"></script>
+	<script src="../assets/plugin/customcontrols/plugin.js"></script>
+	<script src="../assets/plugin/chalkboard/plugin.js"></script>
+	<script src="../assets/plugin/reveal-pointer/pointer.js"></script>
 
     <script>
       function extend() {
@@ -1025,14 +1009,14 @@ $ OK: Python-3.14.0rc1.tgz
 		  RevealCustomControls,
 		  RevealMenu,
 	      RevealPointer,
-		  RevealChalkboard, 
+		  RevealChalkboard,
         ],
 
 
     	allottedTime: 120 * 1000,
 
 		mathjax3: {
-			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+			mathjax: '../assets/plugin/math/mathjax/tex-mml-chtml.js',
 		},
 		markdown: {
 		  gfm: true,
