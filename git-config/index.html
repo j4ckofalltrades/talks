@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <title>git config --make-git-work-for-you</title>
-    <link rel="stylesheet" href="dist/reveal.css" />
-    <link rel="stylesheet" href="dist/theme/consult.css" id="theme" />
-    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
-	<link rel="stylesheet" href="css/layout.css" />
-	<link rel="stylesheet" href="plugin/customcontrols/style.css">
-	<link rel="stylesheet" href="plugin/chalkboard/style.css">
+    <link rel="stylesheet" href="../assets/dist/reveal.css" />
+    <link rel="stylesheet" href="../assets/dist/theme/consult.css" id="theme" />
+    <link rel="stylesheet" href="../assets/plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="../assets/css/layout.css" />
+	<link rel="stylesheet" href="../assets/plugin/customcontrols/style.css">
+	<link rel="stylesheet" href="../assets/plugin/chalkboard/style.css">
 
-	<link rel="stylesheet" href="plugin/reveal-pointer/pointer.css" />
+	<link rel="stylesheet" href="../assets/plugin/reveal-pointer/pointer.css" />
 
 
-    <script defer src="dist/fontawesome/all.min.js"></script>
+    <script defer src="../assets/dist/fontawesome/all.min.js"></script>
 
 	<script type="text/javascript">
 		var forgetPop = true;
@@ -62,7 +62,7 @@
 				fitElement(element, start, size);
 			} else {
 				fitElement(element, size, end);
-			}		
+			}
 		}
 
 
@@ -93,19 +93,17 @@
 .callout{
   width: 700px;
   font-size: 20px;
-} 
+}
+
+.reveal .code-wrapper {
+  font-size: 13px;
+}
 </style>
 
 
 
 # git config --make-it-work-for-you
 
-<br ></br>
-
-<div class="block">
-
-### Jordan Duabe, _Software Engineer_
-</div>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -132,8 +130,7 @@
 
 ### Jordan Duabe
 
-- Software engineer (web and mobile applications)
-- Mechanical keyboard enthusiast
+- SWE, mechanical keyboard enthusiast
 - [_jordan&#64;jduabe.dev_](mailto:jordan@jduabe.dev)
 - [_&#64;j4ckofalltrades&#64;infosec.exchange_](infosec.exchange/@j4ckofalltrades)
 
@@ -143,7 +140,63 @@
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## _git config scopes_
+</div>
+
+
+</div>
+
+<div class="" style="position: absolute; left: 5%; top: 17%; height: 66%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+
+
+```conf
+system
+$(prefix)/etc/gitconfig
+
+global
+$XDG_CONFIG_HOME/git/config
+~/.gitconfig
+
+local
+$GIT_DIR/config
+
+worktree
+$GIT_DIR/config.worktree
+
+command
+GIT_CONFIG_{COUNT,KEY,VALUE} environment variables
+```
+
+
+</div>
+
+<style>
+    .horizontal_dotted_line{
+        border-bottom: 2px dotted gray;
+    }
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -197,7 +250,7 @@ Enable autocorrect
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -274,7 +327,7 @@ Configure aliases
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -376,7 +429,7 @@ $ git branch
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -430,7 +483,7 @@ Better tag sorting
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -504,13 +557,13 @@ Better fetch
 
 notes:
 
-Deletes references to all branches and tags that do not exist on the remote repository. This will not delete local branches or tags. 
+Deletes references to all branches and tags that do not exist on the remote repository. This will not delete local branches or tags.
 
 
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -572,7 +625,7 @@ Simplifies pushing to just `git push` in most cases.
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -652,7 +705,7 @@ There are 4 diff algorithms that are shipped with git: myers (default), minimal,
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -677,7 +730,7 @@ void func1() {
 +void functhreehalves() {
 +    x += 1.5
 }
- 
+
 void func2() {
      x += 2
 }
@@ -740,7 +793,7 @@ Configure git to use the best text editor
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -791,6 +844,7 @@ Setup a global `.gitignore` for commonly ignored files
 </div>
 
 ```ini
+# ~/.gitignore-global
 .DS_Store
 *.orig
 *.swp
@@ -803,7 +857,7 @@ Setup a global `.gitignore` for commonly ignored files
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -842,7 +896,7 @@ Setup a global `.gitignore` for commonly ignored files
 </div>
 <div class="callout-title-inner">
 
-Use delta as a pager 
+Use delta as a pager
 
 </div>
 </div>
@@ -863,7 +917,7 @@ _delta_ is a syntax-highlighting pager for git, diff, grep, and blame output.
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -899,7 +953,7 @@ _delta_ is a syntax-highlighting pager for git, diff, grep, and blame output.
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -969,7 +1023,7 @@ notes:
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -1033,7 +1087,7 @@ With rerere.enabled set, git will remember how to resolve a conflict and reuse i
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -1095,7 +1149,7 @@ You can use either `GPG` or `SSH` to sign tags and commits locally.
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -1152,11 +1206,6 @@ Forges e.g. GitHub will then mark signed commits (or tags) that are verifiable a
 
 </div>
 
-
-
-
-
-
 ```bash
 $ tree
 .
@@ -1168,23 +1217,19 @@ $ tree
 │   └── oss-repo-2
 └── work
     └── work-repo-1
-```
 
-
-```bash
-# .gitconfig
+$ cat .gitconfig
 [includeIf "gitdir:~/oss/"]
   path = ~/.gitconfig-oss
 
 [includeIf "gitdir:~/work/"]
   path = ~/.gitconfig-work
 
-# .gitconfig.oss
+$ cat .gitconfig-oss
 [user]
 	email = my-oss-email.com
-	signingKey = ABC123DEF
 
-# gitconfig.work
+$ cat .gitconfig-work
 [user]
 	email = my-work-email.com
 	signingKey = 101XYZ101
@@ -1194,7 +1239,7 @@ $ tree
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-} 
+}
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -1227,24 +1272,24 @@ $ tree
 
 ## _Thank You_
 
-<img src="assets/git-config/qr-code.png" alt="git config talk QR code|300" style="width: 300px; object-fit: fill">
+<img src="../assets/git-config/qr-code.png" alt="git config talk QR code|300" style="width: 300px; object-fit: fill">
 </div></script></section></div>
     </div>
 
-    <script src="dist/reveal.js"></script>
+    <script src="../assets/dist/reveal.js"></script>
 
-    <script src="plugin/markdown/markdown.js"></script>
-    <script src="plugin/highlight/highlight.js"></script>
-    <script src="plugin/zoom/zoom.js"></script>
-    <script src="plugin/notes/notes.js"></script>
-    <script src="plugin/math/math.js"></script>
-	<script src="plugin/mermaid/mermaid.js"></script>
-	<script src="plugin/chart/chart.min.js"></script>
-	<script src="plugin/chart/plugin.js"></script>
-	<script src="plugin/menu/menu.js"></script>
-	<script src="plugin/customcontrols/plugin.js"></script>
-	<script src="plugin/chalkboard/plugin.js"></script>
-	<script src="plugin/reveal-pointer/pointer.js"></script>
+    <script src="../assets/plugin/markdown/markdown.js"></script>
+    <script src="../assets/plugin/highlight/highlight.js"></script>
+    <script src="../assets/plugin/zoom/zoom.js"></script>
+    <script src="../assets/plugin/notes/notes.js"></script>
+    <script src="../assets/plugin/math/math.js"></script>
+	<script src="../assets/plugin/mermaid/mermaid.js"></script>
+	<script src="../assets/plugin/chart/chart.min.js"></script>
+	<script src="../assets/plugin/chart/plugin.js"></script>
+	<script src="../assets/plugin/menu/menu.js"></script>
+	<script src="../assets/plugin/customcontrols/plugin.js"></script>
+	<script src="../assets/plugin/chalkboard/plugin.js"></script>
+	<script src="../assets/plugin/reveal-pointer/pointer.js"></script>
 
     <script>
       function extend() {
@@ -1302,7 +1347,7 @@ $ tree
 		  RevealCustomControls,
 		  RevealMenu,
 	      RevealPointer,
-		  RevealChalkboard, 
+		  RevealChalkboard,
         ],
 
 
