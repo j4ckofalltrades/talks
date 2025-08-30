@@ -11,14 +11,7 @@ Links to the reveal.js slides of talks I've presented.
 - [Trusted Publishing & Digital Attestations in the OSS Ecosystem](https://talks.jduabe.dev/trusted-publishing-attestations) at PythonWA (_2025-09-04_)
 - [git config --make-git-work-for-you](https://talks.jduabe.dev/git-config) at Perth GitHub User Group (_2025-10-16_)
 
-The talks are also available in PDF.
-
-- [Git Deep Dive](pdf/git-deep-dive.pdf)
-- [Trusted Publishers in PyPI](pdf/pypi-trusted-publisher.pdf)
-- [Git Hooks](pdf/git-hooks.pdf)
-- [Snake2040](pdf/snake2040.pdf)
-- [Trusted Publishing & Digital Attestations in the OSS Ecosystem](pdf/trusted-publishing-digital-attestations-oss.pdf)
-- [git config --make-git-work-for-you](pdf/git-config.pdf)
+The talks are also available as [PDF](pdf/).
 
 ##  License
 
