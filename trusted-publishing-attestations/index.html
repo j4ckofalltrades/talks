@@ -60,7 +60,7 @@
 				fitElement(element, start, size);
 			} else {
 				fitElement(element, size, end);
-			}
+			}		
 		}
 
 
@@ -91,11 +91,15 @@
 .mermaid{
   width: 600px;
 }
+
+.reveal .code-wrapper{
+  font-size: 16px;
+}
 </style>
 
 
-# Trusted Publishing & Digital Attestations in the OSS Ecosystem
 
+# Trusted Publishing & Digital Attestations in the OSS Ecosystem
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -122,7 +126,8 @@
 
 ### Jordan Duabe
 
-- SWE, mechanical keyboard enthusiast
+- Software Engineer
+- Mechanical keyboard enthusiast
 - [_jordan&#64;jduabe.dev_](mailto:jordan@jduabe.dev)
 - [_&#64;j4ckofalltrades&#64;infosec.exchange_](infosec.exchange/@j4ckofalltrades)
 
@@ -132,7 +137,7 @@
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -191,7 +196,7 @@ GitHub-->>PyPI: Upload package
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -237,7 +242,7 @@ GitHub-->>PyPI: Upload package
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -275,7 +280,7 @@ GitHub-->>PyPI: Upload package
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -305,17 +310,13 @@ GitHub-->>PyPI: Upload package
 
 </div>
 
-<div class="" style="position: absolute; left: 5%; top: 17%; height: 66%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
 
 
 
 
-
-
-
-The easy way, using the PyPA official [gh-action-pypi-publish](https://github.com/pypa/gh-action-pypi-publish) GitHub Action.
 
 ```diff
+# https://github.com/pypa/gh-action-pypi-publish
 jobs:
   pypi-publish:
     name: upload release to PyPI
@@ -338,12 +339,10 @@ jobs:
 
 
 
-</div>
-
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -396,7 +395,7 @@ jobs:
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -439,7 +438,7 @@ jobs:
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -447,6 +446,50 @@ jobs:
 </div>
 
 <div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _Supply Chain Attack on Nx build system package_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<img src="../assets/trusted-publishing/nx-remediation-trusted-publishers.png" alt="nx remediation steps|600" style="width: 600px; object-fit: fill">
+
+
+
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+##### Source: https://github.com/nrwl/nx/security/advisories/GHSA-cxm3-wv7p-598c
+</div>
+
 
 
 </div>
@@ -504,7 +547,7 @@ Digitally signed, publicly verifiable statements about Python packages, includin
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -548,7 +591,7 @@ Digitally signed, publicly verifiable statements about Python packages, includin
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -583,16 +626,14 @@ Digitally signed, publicly verifiable statements about Python packages, includin
 
 
 
-<img src="../assets/trusted-publishing/pypi-attestation-sigstore.png" alt="pypi-attestation-sigstore|580" style="width: 580px; object-fit: fill">
-
-
+<img src="../assets/trusted-publishing/trusted-publishing-sigstore.png" alt="Trusted Publishing with Sigstore|650" style="width: 650px; object-fit: fill">
 
 
 
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -600,12 +641,6 @@ Digitally signed, publicly verifiable statements about Python packages, includin
 </div>
 
 <div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
-
-<div class="block">
-
-##### Source: https://blog.trailofbits.com/2024/11/14/attestations-a-new-generation-of-signatures-on-pypi/
-</div>
-
 
 
 </div>
@@ -622,18 +657,14 @@ Digitally signed, publicly verifiable statements about Python packages, includin
 
 </div>
 
-<div class="" style="position: absolute; left: 5%; top: 17%; height: 66%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
 
 
 
 
 
-
-
-- Using the PyPA official [gh-action-pypi-publish](https://github.com/pypa/gh-action-pypi-publish) GitHub Action.
-- Attestations enabled by default as of `v.1.11.0 and newer`.
-
-```text
+```yaml
+# https://github.com/pypa/gh-action-pypi-publish
+# Attestations enabled by default as of v.1.11.0 and newer
 jobs:
   pypi-publish:
     name: upload release to PyPI
@@ -651,12 +682,10 @@ jobs:
 
 
 
-</div>
-
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -700,7 +729,7 @@ jobs:
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -730,17 +759,13 @@ jobs:
 
 </div>
 
-<div class="" style="position: absolute; left: 5%; top: 17%; height: 66%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
 
 
 
 
 
-
-
-Route: `GET /integrity/<project>/<version>/<filename>/provenance`
-
-```text
+```bash
+# GET /integrity/<project>/<version>/<filename>/provenance
 $ http get https://pypi.org/integrity/powerline-k8s/1.5.4/powerline_k8s-1.5.4.tar.gz/provenance \
 > | jq -r '.attestation_bundles[0].attestations[0].envelope.statement' \
 > | base64 -d \
@@ -756,17 +781,16 @@ $ http get https://pypi.org/integrity/powerline-k8s/1.5.4/powerline_k8s-1.5.4.ta
       }
     }
   ],
-  "predicateType": "https://docs.pypi.org/attestations/publish/v1"
+  "predicateType": "https://docs.pypi.org/attestations/publish/v1",
+  "predicate": null
 }
 ```
 
 
-</div>
-
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -774,6 +798,102 @@ $ http get https://pypi.org/integrity/powerline-k8s/1.5.4/powerline_k8s-1.5.4.ta
 </div>
 
 <div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _Adoption in the OSS ecosystem: npm_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<img src="https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry/npm-provenance.png" alt="npm provenance|600" style="width: 600px; object-fit: fill">
+
+
+```bash
+$ npm audit signatures
+audited 507 packages in 7s
+
+507 packages have verified registry signatures
+
+10 packages have verified attestations
+```
+
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+##### Source: https://docs.npmjs.com/generating-provenance-statements
+</div>
+
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _npm package provenance stats_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<img src="../assets/trusted-publishing/npm-package-provenance.png" alt="npm package provenance stats|500" style="width: 500px; object-fit: fill">
+
+
+
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+##### Source: https://jduabe.dev/npm-package-provenance-stats
+</div>
+
 
 
 </div>
@@ -814,7 +934,6 @@ $ http get https://pypi.org/integrity/powerline-k8s/1.5.4/powerline_k8s-1.5.4.ta
 - [PEP 761](https://peps.python.org/pep-0761/)
 - [GitHub Artifact Attestations](https://docs.github.com/en/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds)
 - [Homebrew provenance](https://blog.trailofbits.com/2024/05/14/a-peek-into-build-provenance-for-homebrew/)
-- [Central Publisher Portal validates Sigstore signatures](https://central.sonatype.org/news/20250128_sigstore_signature_validation_via_portal/)
 
 
 </div>
@@ -822,7 +941,7 @@ $ http get https://pypi.org/integrity/powerline-k8s/1.5.4/powerline_k8s-1.5.4.ta
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -874,7 +993,7 @@ $ OK: Python-3.14.0rc1.tgz
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -898,6 +1017,62 @@ $ OK: Python-3.14.0rc1.tgz
 
  <div class="block">
 
+## _GitHub attestations and brew provenance_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<img src="https://github.blog/wp-content/uploads/2024/05/attestations3.png?w=1024" alt="GitHub artifact attestations|530" style="width: 530px; object-fit: fill">
+
+
+```bash
+# github artifact attestations can be verified using the gh cli
+$ gh attestation verify my-artifact.tar.gz --owner my-organization
+
+# homebrew provenance is still in beta
+$ export HOMEBREW_VERIFY_ATTESTATIONS=1
+$ brew install uv
+
+# use verify manually (depends on gh cli)
+$ brew verify uv
+```
+
+
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+##### Source: https://github.blog/news-insights/product-news/introducing-artifact-attestations-now-in-public-beta/
+</div>
+
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
 ## _Takeaways_
 </div>
 
@@ -906,11 +1081,16 @@ $ OK: Python-3.14.0rc1.tgz
 
 <div class="" style="position: absolute; left: 5%; top: 17%; height: 66%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
 
+
+
+
+
+
+
 - Trusted publishing improves security by removing the need for a preexisting shared secret
 - Digital attestations provide verifiable provenance for Python package distributions
-- Digital attestations impose additional sophistication requirements
 - Downstream verification -- integration with tooling like `pip` and `uv`
-- Not a _panacea_ -- one step that improves software supply chain security
+- Not a _panacea_ -- one step that improves software supply chain security 
 
 
 </div>
@@ -918,7 +1098,7 @@ $ OK: Python-3.14.0rc1.tgz
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -1009,14 +1189,14 @@ $ OK: Python-3.14.0rc1.tgz
 		  RevealCustomControls,
 		  RevealMenu,
 	      RevealPointer,
-		  RevealChalkboard,
+		  RevealChalkboard, 
         ],
 
 
     	allottedTime: 120 * 1000,
 
 		mathjax3: {
-			mathjax: '../assets/plugin/math/mathjax/tex-mml-chtml.js',
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
 		},
 		markdown: {
 		  gfm: true,
