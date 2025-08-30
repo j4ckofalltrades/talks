@@ -154,6 +154,13 @@
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
+<img src="https://imgs.xkcd.com/comics/git.png" alt="xkcd comic about git complexity|200" style="width: 200px; object-fit: fill">
+
+
+##### Source: https://xkcd.com/1597
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
 <div class="" style="background: radial-gradient(#003D4D, #333333); position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
 
 
@@ -892,6 +899,86 @@ Configure git to use the best text editor
 
  <div class="block">
 
+## _Commit with diffs_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Show diff in the commit editor
+
+</div>
+</div>
+<div class="callout-content">
+
+git config --global commit.verbose true
+
+</div>
+</div>
+
+```gitcommit
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#       modified:   README.md
+#
+# ------------------------ >8 ------------------------
+# Do not modify or remove the line above.
+# Everything below it will be ignored.
+diff --git c/README.md i/README.md
+index d6166fe..71ee90f 100644
+--- c/README.md
++++ i/README.md
+```
+<!-- .element: style="font-size: 11px" -->
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="https://imgs.xkcd.com/comics/git_commit.png" alt="xkcd comic descriptive git commit messages|400" style="width: 400px; object-fit: fill">
+
+##### Source: https://xkcd.com/1296/
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
 ## _Global gitignore_
 </div>
 
@@ -1054,6 +1141,51 @@ _delta_ is a syntax-highlighting pager for git, diff, grep, and blame output.
 </div>
 
 <div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _What is your merge strategy?_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnoybHV5YWlic3EweHR1cHY5c3R6Y2lhZmplemw0dDdmMzZ5NzI1dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cFkiFMDg3iFoI/giphy.gif" alt="git merge gif" style="object-fit: scale-down">
+
+<!-- .element: class="fragment" -->
+
+
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+##### Source: https://giphy.com/gifs/git-merge-cFkiFMDg3iFoI
+</div>
+
 
 
 </div>
@@ -1365,8 +1497,7 @@ $ cat .gitconfig-work
 
 - Experiment and see what fits with your workflow.
 - The best configuration is the one that works for you.
-
-<br ></br>
+<!-- .element: style="margin-bottom: 15px" -->
 
 ### _Recommended reading_
 
@@ -1378,15 +1509,60 @@ $ cat .gitconfig-work
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## _git config gist_
+## _Links_
 
-<img src="../assets/git-config/qr-code-gist.png" alt="git config gist QR code|300" style="width: 300px; object-fit: fill">
+**L:** Link to gist for git config, **R:** Link to slides
+
+<split even gap="3">
+<img src="../assets/git-config/qr-code-gist.png" alt="git config gist QR code|200" style="width: 200px; object-fit: fill">
+
+
+<img src="../assets/git-config/qr-code.png" alt="git config talk QR code|200" style="width: 200px; object-fit: fill">
+
+</split>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-## _Thank You_
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
 
-<img src="../assets/git-config/qr-code.png" alt="git config talk QR code|300" style="width: 300px; object-fit: fill">
+ <div class="block">
+
+## _Thank You_
+</div>
+
+
+</div>
+
+
+
+
+
+
+<img src="https://raw.githubusercontent.com/hendrixroa/in-case-of-fire-1/master/in_case_of_fire.png" alt="in case of fire git commands|400" style="width: 400px; object-fit: fill">
+
+
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+##### Source: https://raw.githubusercontent.com/hendrixroa/in-case-of-fire-1/master/in_case_of_fire.png
+</div>
+
+
+
+</div>
 </div></script></section></div>
     </div>
 
