@@ -62,7 +62,7 @@
 				fitElement(element, start, size);
 			} else {
 				fitElement(element, size, end);
-			}
+			}		
 		}
 
 
@@ -93,17 +93,16 @@
 .callout{
   width: 700px;
   font-size: 20px;
-}
+} 
 
-.reveal .code-wrapper {
-  font-size: 13px;
+.reveal .code-wrapper{
+  font-size: 16px;
 }
 </style>
 
 
 
 # git config --make-it-work-for-you
-
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -130,7 +129,8 @@
 
 ### Jordan Duabe
 
-- SWE, mechanical keyboard enthusiast
+- Software Engineer
+- Mechanical keyboard enthusiast
 - [_jordan&#64;jduabe.dev_](mailto:jordan@jduabe.dev)
 - [_&#64;j4ckofalltrades&#64;infosec.exchange_](infosec.exchange/@j4ckofalltrades)
 
@@ -140,7 +140,65 @@
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
+</style>
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="background: radial-gradient(#003D4D, #333333); position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+
+
+
+## _Configuring git_
+ <!-- .element: style="color: white" -->
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ <div class="block">
+
+## _git config scopes_
+</div>
+
+
+</div>
+
+
+
+
+
+
+```conf
+system
+    $(prefix)/etc/gitconfig
+   
+global
+    $XDG_CONFIG_HOME/git/config
+    ~/.gitconfig
+
+local
+    $GIT_DIR/config
+```
+
+
+<style>
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -156,47 +214,45 @@
 
 <div class="has-light-background" style="background-color: white; padding: 0 20px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 10%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
 
-<div class="block">
+ <div class="block">
 
-## _git config scopes_
+## _"Local wins"_
 </div>
 
 
 </div>
 
-<div class="" style="position: absolute; left: 5%; top: 17%; height: 66%; width: 90%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
 
 
 
 
 
+<div class="callout callout-color1">
+<div class="callout-title">
+<div class="callout-icon">
 
-
-```conf
-system
-$(prefix)/etc/gitconfig
-
-global
-$XDG_CONFIG_HOME/git/config
-~/.gitconfig
-
-local
-$GIT_DIR/config
-
-worktree
-$GIT_DIR/config.worktree
-
-command
-GIT_CONFIG_{COUNT,KEY,VALUE} environment variables
-```
+<i class="fas fa-info-circle" ></i>
 
 
 </div>
+<div class="callout-title-inner">
+
+git config priority
+
+</div>
+</div>
+<div class="callout-content">
+
+`Local > Global > System`
+
+</div>
+</div>
+
 
 <style>
-    .horizontal_dotted_line{
-        border-bottom: 2px dotted gray;
-    }
+.horizontal_dotted_line{
+  border-bottom: 2px dotted gray;
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -205,6 +261,19 @@ GIT_CONFIG_{COUNT,KEY,VALUE} environment variables
 
 <div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
 
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="background: radial-gradient(#003D4D, #333333); position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+
+
+
+## _Quality of life changes_
+ <!-- .element: style="color: white" -->
 
 </div>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
@@ -250,7 +319,7 @@ Enable autocorrect
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -264,10 +333,8 @@ Enable autocorrect
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-git will search for the closest matching valid command and suggest that to you.
-
-
 ```bash
+# git will search for the closest matching valid command and suggest that to you.
 $ git branhc
 WARNING: You called a Git command named 'branhc', which does not exist.
 Run 'branch' instead? (y/N)y
@@ -327,7 +394,7 @@ Configure aliases
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -341,30 +408,30 @@ Configure aliases
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Alternatively you can edit your `.gitconfig` file directly.
+```props
+# Alternatively you can edit your `.gitconfig` file directly.
+# If you have any external scripts, you can call them from git
+# with `!/path/to/your/script`.
 
-If you have any external scripts, you can call them from git with `!/path/to/your/script`.
-
-```text
 [alias]
   bbr = !better-git-branch.sh
-  br = branch
-  cm = commit
-  di = diff
+  br  = branch
+  cm  = commit
+  di  = diff
   dis = diff --staged
   lol = log --oneline
-  rs = restore
+  rs  = restore
   rss = restore --staged
-  st = status -sb
-  sh = stash
-  sw = switch
+  st  = status -sb
+  sh  = stash
+  sw  = switch
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Autocomplete also works for configured aliases.
-
 ```bash
+# Autocomplete also works for configured aliases.
+
 # tab completion works for all aliases
 $ git rs
 rs    rss
@@ -429,7 +496,7 @@ $ git branch
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -483,7 +550,7 @@ Better tag sorting
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -497,9 +564,10 @@ Better tag sorting
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-This setting treats version numbers as integers instead of the full tag name as a string.
-
 ```bash
+# This setting treats version numbers as integers
+# instead of the full tag name as a string.
+
 # default "sort" for tags
 $ git tag
 1.0.0
@@ -557,13 +625,13 @@ Better fetch
 
 notes:
 
-Deletes references to all branches and tags that do not exist on the remote repository. This will not delete local branches or tags.
+Deletes references to all branches and tags that do not exist on the remote repository. This will not delete local branches or tags. 
 
 
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -608,7 +676,7 @@ Better push
 </div>
 <div class="callout-content">
 
-`git config --global push.default simple`
+`git config --global push.default simple` # default since 2.0
 
 `git config --global push.autoSetupRemote true`
 
@@ -625,7 +693,7 @@ Simplifies pushing to just `git push` in most cases.
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -639,9 +707,10 @@ Simplifies pushing to just `git push` in most cases.
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-`push.autoSetupRemote = true` gets rid of the following error which you might be familiar with:
-
 ```bash
+# `push.autoSetupRemote = true` gets rid of the following error
+# which you might be familiar with:
+
 $ git push
 fatal: The current branch my-branch-name has no upstream branch.
 To push the current branch and set the remote as upstream, use
@@ -705,7 +774,7 @@ There are 4 diff algorithms that are shipped with git: myers (default), minimal,
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -716,6 +785,27 @@ There are 4 diff algorithms that are shipped with git: myers (default), minimal,
 
 
 </div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## _mnemonic prefix_
+
+```markdown
+$ git diff
+diff --git a/git-config/index.html b/git-config/index.html
+index 98ede1b..884b1f1 100644
+--- a/git-config/index.html
++++ b/git-config/index.html
+```
+
+```markdown
+# diff.mnemonicPrefix true
+$ git diff
+diff --git i/git-config/index.html w/git-config/index.html
+index 98ede1b..884b1f1 100644
+--- i/git-config/index.html
++++ w/git-config/index.html
+```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -730,13 +820,7 @@ void func1() {
 +void functhreehalves() {
 +    x += 1.5
 }
-
-void func2() {
-     x += 2
-}
-```
-
-```diff
+ 
 -- histogram
 void func1() {
      x += 1
@@ -746,9 +830,6 @@ void func1() {
 +    x += 1.5
 +}
 +
-void func2() {
-     x += 2
-}
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -793,7 +874,7 @@ Configure git to use the best text editor
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -844,7 +925,6 @@ Setup a global `.gitignore` for commonly ignored files
 </div>
 
 ```ini
-# ~/.gitignore-global
 .DS_Store
 *.orig
 *.swp
@@ -857,7 +937,7 @@ Setup a global `.gitignore` for commonly ignored files
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -866,6 +946,19 @@ Setup a global `.gitignore` for commonly ignored files
 
 <div class="" style="padding: 0 30px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
 
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="background: radial-gradient(#003D4D, #333333); position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+
+
+
+
+## _"It depends" / Matter of preference_
+ <!-- .element: style="color: white" -->
 
 </div>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
@@ -896,7 +989,7 @@ Setup a global `.gitignore` for commonly ignored files
 </div>
 <div class="callout-title-inner">
 
-Use delta as a pager
+Use delta as a pager 
 
 </div>
 </div>
@@ -917,7 +1010,7 @@ _delta_ is a syntax-highlighting pager for git, diff, grep, and blame output.
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -953,7 +1046,7 @@ _delta_ is a syntax-highlighting pager for git, diff, grep, and blame output.
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -1023,7 +1116,7 @@ notes:
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -1087,7 +1180,7 @@ With rerere.enabled set, git will remember how to resolve a conflict and reuse i
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -1136,7 +1229,7 @@ Configure git to sign commits and tags with a GPG key
 
 `git config --global commit.gpgSign true` # sign commits
 
-`git config --global commit.gpgSign true` # sign tags
+`git config --global tag.gpgSign true` # sign tags
 
 </div>
 </div>
@@ -1149,7 +1242,7 @@ You can use either `GPG` or `SSH` to sign tags and commits locally.
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -1162,8 +1255,6 @@ You can use either `GPG` or `SSH` to sign tags and commits locally.
 </div>
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-Alternatively, you can also sign commits and tags with a SSH key.
 
 <div class="callout callout-color2">
 <div class="callout-title">
@@ -1190,7 +1281,19 @@ Configure git to sign commits and tags with a SSH key
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-Forges e.g. GitHub will then mark signed commits (or tags) that are verifiable as _Verified_.
+Git forges e.g. GitHub will then mark signed commits (or tags) that are verifiable as _Verified_.
+
+```bash
+$ git log --show-signature
+commit 9627416a5acb42eef9eac79d2b59765f6ca39510 (HEAD -> main)
+gpg: Signature made Sat 30 Aug 2025 06:49:36 PM AWST
+gpg:                using EDDSA key A8C6DD14ECFC45C04F06535149CC7B953A9FA12D
+gpg: Good signature from "Jordan Duabe <me@jduabe.dev>" [ultimate]
+Author: Jordan Duabe <me@jduabe.dev>
+Date:   Sat Aug 30 18:49:19 2025 +0800
+
+    Update trusted publishing & attestations talk
+```
 
 <img src="https://res.cloudinary.com/j4ckofalltrades/image/upload/f_auto,q_auto/v1/blog/gh-verified-commit" alt="GitHub verified commit" style="object-fit: scale-down">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
@@ -1206,40 +1309,45 @@ Forges e.g. GitHub will then mark signed commits (or tags) that are verifiable a
 
 </div>
 
+
+
+
+
+
 ```bash
 $ tree
-.
-├── .gitconfig
-├── .gitconfig-oss
-├── .gitconfig-work
-├── oss
-│   ├── oss-repo-1
-│   └── oss-repo-2
-└── work
-    └── work-repo-1
+.  
+├── .gitconfig  
+├── .gitconfig-oss  
+├── .gitconfig-work  
+├── oss  
+│   └── oss-repo-1  
+└── work  
+    └── work-repo-1  
 
-$ cat .gitconfig
-[includeIf "gitdir:~/oss/"]
-  path = ~/.gitconfig-oss
-
-[includeIf "gitdir:~/work/"]
-  path = ~/.gitconfig-work
-
-$ cat .gitconfig-oss
-[user]
-	email = my-oss-email.com
-
-$ cat .gitconfig-work
-[user]
-	email = my-work-email.com
-	signingKey = 101XYZ101
+$ cat .gitconfig  
+[includeIf "gitdir:~/oss/"]  
+  path = ~/.gitconfig-oss  
+  
+[includeIf "gitdir:~/work/"]  
+  path = ~/.gitconfig-work  
+  
+$ cat .gitconfig-oss  
+[user]  
+    email = my-oss-email.com  
+  
+$ cat .gitconfig-work  
+[user]  
+    email = my-work-email.com  
+    signingKey = 101XYZ101
 ```
+<!-- .element: style="font-size: 13px" -->
 
 
 <style>
 .horizontal_dotted_line{
   border-bottom: 2px dotted gray;
-}
+} 
 </style>
 
 <div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
@@ -1267,6 +1375,12 @@ $ cat .gitconfig-work
 - [So You Think You Know Git?](https://speakerdeck.com/schacon/so-you-think-you-know-git)
 - [Jujutsu](https://github.com/jj-vcs/jj)
 - [What's in my .gitconfig?](https://jduabe.dev/posts/2025/git-config/)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## _git config gist_
+
+<img src="../assets/git-config/qr-code-gist.png" alt="git config gist QR code|300" style="width: 300px; object-fit: fill">
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 540px; width: 960px; min-height: 540px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -1347,7 +1461,7 @@ $ cat .gitconfig-work
 		  RevealCustomControls,
 		  RevealMenu,
 	      RevealPointer,
-		  RevealChalkboard,
+		  RevealChalkboard, 
         ],
 
 
