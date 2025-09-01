@@ -2,16 +2,14 @@
 
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
-Links to the reveal.js slides of talks I've presented.
-
-- [Git Deep Dive](https://talks.jduabe.dev/git-deep-dive) at SheCodes Plus Masterclass Day (_2023-02-23_)
-- [Trusted Publishers in PyPI](https://talks.jduabe.dev/pypi-trusted-publisher) at PythonWA (_2024-04-04_)
-- [Git Hooks](https://talks.jduabe.dev/git-hooks) at SheCodes Plus Masterclass Day (_2024-11-23_)
-- [Snake2040](https://talks.jduabe.dev/snake2040) at PythonWA (_2025-06-05_)
-- [Trusted Publishing & Digital Attestations in the OSS Ecosystem](https://talks.jduabe.dev/trusted-publishing-attestations) at PythonWA (_2025-09-04_)
-- [git config --make-git-work-for-you](https://talks.jduabe.dev/git-config) at Perth GitHub User Group (_2025-10-16_)
-
-The talks are also available as [PDF](pdf/).
+| Title                                                            | Date       | Event                         | Links                                                                                                                          |
+|------------------------------------------------------------------|------------|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| Git Deep Dive                                                    | 2023-02-23 | SheCodes Plus Masterclass Day | [Slides](https://talks.jduabe.dev/git-deep-dive), [PDF](pdf/git-deep-dive.pdf)                                                 |
+| Trusted Publishers in PyPI                                       | 2024-04-04 | PythonWA                      | [Slides](https://talks.jduabe.dev/pypi-trusted-publisher), [PDF](pdf/pypi-trusted-publisher.pdf)                               |
+| Git Hooks                                                        | 2024-11-23 | SheCodes Plus Masterclass Day | [Slides](https://talks.jduabe.dev/git-hooks), [PDF](pdf/git-hooks.pdf)                                                         |
+| Snake2040                                                        | 2025-06-05 | PythonWA                      | [Slides](https://talks.jduabe.dev/snake2040), [PDF](pdf/snake2040.pdf)                                                         |
+| Trusted Publishing & Digital Attestations in the OSS Ecosystem   | 2025-09-04 | PythonWA                      | [Slides](https://talks.jduabe.dev/trusted-publishing-attestations), [PDF](pdf/trusted-publishing-digital-attestations-oss.pdf) |
+| git config --make-git-work-for-you                               | 2025-10-16 | Perth GitHub User Group       | [Slides](https://talks.jduabe.dev/git-config), [PDF](pdf/git-config.pdf)                                                       |
 
 ##  License
 
