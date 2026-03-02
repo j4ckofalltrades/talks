@@ -11,6 +11,8 @@
 | Trusted Publishing & Digital Attestations in the OSS Ecosystem   | 2025-09-04 | PythonWA                      | [Slides](https://talks.jduabe.dev/trusted-publishing-attestations), [PDF](pdf/trusted-publishing-digital-attestations-oss.pdf) |
 | git config --make-git-work-for-you                               | 2025-10-16 | Perth GitHub User Group       | [Slides](https://talks.jduabe.dev/git-config), [PDF](pdf/git-config.pdf)                                                       |
 
+| So You Think You Know Python?                                    | 2025-03-05 | PythonWA                      | [PDF](pdf/so-you-think-you-know-python.pdf)                                               |
+
 ##  License
 
 This work is licensed under a
